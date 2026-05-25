@@ -20,51 +20,30 @@ public class MonitoreoController {
     @Autowired
     private MonitoreoService service;
 
-    // VER LIBROS
     @GetMapping("/libros")
     public List<LibroDTO> libros() {
         return service.obtenerLibros();
     }
 
-    // VER SUCURSALES
     @GetMapping("/sucursales")
     public List<SucursalDTO> sucursales() {
         return service.obtenerSucursales();
     }
 
-    // RESUMEN GENERAL
     @GetMapping("/resumen")
-    public Map<String, Object> resumen() {
+    public Map<String, Object> resumenGeneral() {
 
-        List<LibroDTO> libros =
-            service.obtenerLibros();
+        List<LibroDTO> libros = service.obtenerLibros();
 
-        List<SucursalDTO> sucursales =
-            service.obtenerSucursales();
+        List<SucursalDTO> sucursales = service.obtenerSucursales();
 
-        int stockTotal = libros.stream()
-                .mapToInt(LibroDTO::getStock)
-                .sum();
+        int stockTotal = libros.stream().mapToInt(LibroDTO::getStock).sum();
 
-        Map<String, Object> datos =
-            new HashMap<>();
-
-        datos.put(
-            "totalLibros",
-            libros.size()
-        );
-
-        datos.put(
-            "stockTotal",
-            stockTotal
-        );
-
-        datos.put(
-            "totalSucursales",
-            sucursales.size()
-        );
-
+        Map<String, Object> datos = new HashMap<>();
+        datos.put("totalLibros",libros.size());
+        datos.put("stockTotal",stockTotal);
+        datos.put("totalSucursales",sucursales.size());
+        
         return datos;
     }
-    
 }

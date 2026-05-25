@@ -16,33 +16,26 @@ public class MonitoreoService {
     @Autowired
     private RestTemplate restTemplate;
 
-    // CONSULTAR INVENTARIO
     public List<LibroDTO> obtenerLibros() {
 
-        String url =
-            "http://localhost:8082/api/libros";
+        String url ="http://localhost:8082/api/libros";
 
-        LibroDTO[] libros =
-            restTemplate.getForObject(
-                url,
-                LibroDTO[].class
-            );
+        try {
 
-        return Arrays.asList(libros);
+            LibroDTO[] libros = restTemplate.getForObject(url,LibroDTO[].class);
+
+            return Arrays.asList(libros);
+        } catch (Exception e) {
+            return List.of();
+        }
     }
 
-    // CONSULTAR SUCURSALES
     public List<SucursalDTO> obtenerSucursales() {
 
-        String url =
-            "http://localhost:8083/api/sucursales";
+        String url ="http://localhost:8083/api/sucursales";
 
-        SucursalDTO[] sucursales =
-            restTemplate.getForObject(
-                url,
-                SucursalDTO[].class
-            );
-
+        SucursalDTO[] sucursales =restTemplate.getForObject(url,SucursalDTO[].class);
+        
         return Arrays.asList(sucursales);
     }
     
