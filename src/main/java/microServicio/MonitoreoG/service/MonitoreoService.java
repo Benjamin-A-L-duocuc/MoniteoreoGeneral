@@ -37,9 +37,9 @@ public class MonitoreoService {
 
     private static final Map<String, String> MS_URLS = new LinkedHashMap<>();
     static {
-        MS_URLS.put("LOGIN", "http://localhost:8081");
-        MS_URLS.put("REGISTRO_USUARIO", "http://localhost:8082");
-        MS_URLS.put("INVENTARIO", "http://localhost:8083");
+        MS_URLS.put("LOGIN", "http://localhost:8092");
+        MS_URLS.put("REGISTRO_USUARIO", "http://localhost:8093");
+        MS_URLS.put("INVENTARIO", "http://localhost:8094");
         MS_URLS.put("ENVIOS", "http://localhost:8084");
         MS_URLS.put("TIENDA_WEB", "http://localhost:8085");
         MS_URLS.put("SUCURSAL", "http://localhost:8086");
